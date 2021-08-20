@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import com.app.pojos.Country;
-import com.app.pojos.DataEntity;
+import com.app.pojos.DataObject;
 import com.app.pojos.LatestData;
 import com.app.pojos.Timeline;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -17,7 +17,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import lombok.extern.slf4j.Slf4j;
 
-@Slf4j
 @Service
 public class CovidTrackerService {
 	
@@ -37,8 +36,7 @@ public class CovidTrackerService {
 		Country country = null;
 		try {
 			String data = restTemplate.getForObject("https://corona-api.com/countries/" + code, String.class);
-			country = objectMapper.readValue(data, new TypeReference<DataEntity<Country>>(){}).getData();
-			log.info(country.toString());
+			country = objectMapper.readValue(data, new TypeReference<DataObject<Country>>(){}).getData();
 		} catch (JsonProcessingException e) {
 			e.printStackTrace();
 		}
@@ -50,10 +48,9 @@ public class CovidTrackerService {
 		Country country = null;
 		try {
 			String data = restTemplate.getForObject("https://corona-api.com/timeline", String.class);
-			Timeline[] timelines = objectMapper.readValue(data, new TypeReference<DataEntity<Timeline[]>>(){}).getData();
+			Timeline[] timelines = objectMapper.readValue(data, new TypeReference<DataObject<Timeline[]>>(){}).getData();
 			LatestData latestData = new LatestData(timelines[0].getDeaths(), timelines[0].getConfirmed(), timelines[0].getRecovered());
 			country = new Country("global","global", Long.valueOf(7800000000L),latestData, Arrays.asList(timelines));
-			log.info(country.toString());
 		} catch (JsonProcessingException e) {
 			e.printStackTrace();
 		}

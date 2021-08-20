@@ -1,0 +1,91 @@
+Login table - Base Entity
+
+email
+password
+role
+
+patient ---
+
+1. patient_id
+1. Name
+4. aadhar
+5. dob/age
+6. address
+7. mobile
+List<Consulations>
+
+doctor ---
+
+1. doctor_id
+1. name
+1. aadhar
+2. address
+3. city
+4. mobile
+5. List<Consulations> 
+
+consultation ---
+
+1. Patient patient 
+2. Doctor doctor
+2. date
+3. prognosis
+4. medicines prescribed
+5. disease
+
+findDoctor --- filter doctor table by city and WITHOUT List<Consulations>, login_details
+MyHistory --- filter consultation table by patient_id and return everything
+
+tend a patient --- enter patient_id and return MyHistory then consult and enter consultation form
+	consultation form --- fetch patient table by id enter new prescription
+	
+list of prev consultations --- filter consultations table by doctor_id return without doctor
+
+
+/patient/id/{patient_id}
+/doctor/id/{doctor_id}
+/doctor/city/{city}?speciality={speciality}
+/consultations/doctor/{doctor_id}
+/consultations/patient/{patient_id}
+/consultations/form
+/login
+
+
+http://localhost:8080/patient/id/12
+http://localhost:8080/doctor/id/100
+http://localhost:8080/doctor/city/delhi?speciality=dentist
+http://localhost:8080/consultations/doctor/100
+http://localhost:8080/consultations/patient/12
+http://localhost:8080/login
+
+/login --- POST Data
+{
+	"email" : "ss@gmail.com",
+	"password" : "helloWorld"
+}
+
+/consultations/form --- POST data
+{
+	"doctor_id" : 100,
+	"patient_id" : 12,
+	"diagnosis" : "Stomach ache",
+	"medicines" : "xyz",
+    	"prognosis" : "Take rest"
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

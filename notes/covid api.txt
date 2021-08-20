@@ -1,0 +1,34 @@
+all country wise ( /countries )
+
+1. name
+2. code
+3. population
+4. latest_data --> deaths, confirmed, recovered
+
+
+/countries
+
+1. name
+2. code
+
+
+one country wise ( /countries/in) https://corona-api.com/countries/in
+
+1. name
+2. code
+3. population
+4. latest_data --> deaths, confirmed, recovered  (current total status)
+4. timeline --> date, new_deaths, new_confirmed, new_recovered
+
+
+global ( /timeline )  https://corona-api.com/timeline
+0th index
+1. deaths
+2. confirmed
+3. recovered
+
+date-wise (7-days)
+1. date
+1. new_confirmed 
+2. new_recovered
+3. new_deaths
