@@ -1,30 +1,31 @@
-import React from 'react'
-import './cover.css'
+import React, {useContext} from 'react'
+import { Link } from 'react-router-dom'
+import './home.css'
+import { UserContext } from './UserContext'
 
-function Home() {
+const Home = () => {
+    const {user, setUser} = useContext(UserContext);
+
     return (
-        <body className="d-flex h-100 text-center text-white bg-dark">
-            <div className="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-                {/* <header class="mb-auto">
-                    <div>
-                        <h3 class="float-md-start mb-0">Cover</h3>
-                        <nav class="nav nav-masthead justify-content-center float-md-end">
-                            <a class="nav-link active" aria-current="page" href="#">Home</a>
-                            <a class="nav-link" href="#">Features</a>
-                            <a class="nav-link" href="#">Contact</a>
-                        </nav>
+        <div className="video-background-holder">
+            <div className="video-background-overlay"></div>
+            <video playsInline="playsinline" autoPlay="autoplay" muted="muted" loop="loop">
+                <source src="/videos/video2.mp4" type="video/mp4"/>
+            </video>
+            <div className="video-background-content container h-100">
+                <div className="d-flex h-100 text-center align-items-center">
+                    <div className="w-100 text-white">
+                        <main className="px-3">
+                            <h1 className="display-4">Healthify.</h1>
+                            <p className="lead">An extensive health management system. Track all your health history with ease.</p>
+                            <p className="lead">
+                                <Link to="/about" className="btn btn-lg btn-secondary text-black fw-bold border-white bg-white">Learn more</Link>
+                            </p>
+                        </main>
                     </div>
-                </header> */}
-
-                <main className="px-3">
-                    <h1>Healthify.</h1>
-                    <p className="lead">An extensive health management system serving all your needs. Track your health history with ease.</p>
-                    <p className="lead">
-                        <a href="#" className="btn btn-lg btn-secondary fw-bold border-white bg-white">Learn more</a>
-                    </p>
-                </main>
+                </div>
             </div>
-        </body>
+        </div>
     )
 }
 

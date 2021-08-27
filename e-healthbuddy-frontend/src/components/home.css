@@ -1,0 +1,39 @@
+.video-background-holder {
+    position: relative;
+    background-color: black;
+    height: calc(100vh - 0px);
+    min-height: 25rem;
+    width: 100%;
+    overflow: hidden;
+  }
+  
+  .video-background-holder video {
+    position: absolute;
+    top: 110%;
+    left: 100%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: 0;
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+  }
+  
+  .video-background-content {
+    position: relative;
+    z-index: 2;
+  }
+  
+  .video-background-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    opacity: 0.5;
+    z-index: 1;
+  }

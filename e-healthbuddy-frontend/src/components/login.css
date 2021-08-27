@@ -1,0 +1,19 @@
+.login {
+  min-height: calc(100vh - 56px);
+}
+
+.bg-image {
+ background-image: url('login.jpg');
+ background-size: cover;
+ background-position: center;
+ }
+
+.login-heading {
+ font-weight: 300;
+ }
+
+.btn-login {
+ font-size: 0.9rem;
+ letter-spacing: 0.05rem;
+ padding: 0.75rem 1rem;
+ }

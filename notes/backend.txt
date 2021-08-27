@@ -56,7 +56,9 @@ http://localhost:8080/doctor/id/100
 http://localhost:8080/doctor/city/delhi?speciality=dentist
 http://localhost:8080/consultations/doctor/100
 http://localhost:8080/consultations/patient/12
+
 http://localhost:8080/login
+http://localhost:8080/consultations/form
 
 /login --- POST Data
 {
