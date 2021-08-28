@@ -3,7 +3,6 @@ import axios from 'axios';
 import { LineChart, BarChart, Bar, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from "recharts";
 
 const CovidTracker = () => {
-  
     const [data, setData] = useState({
       population: 0, 
       latest_data: {
@@ -32,15 +31,19 @@ const CovidTracker = () => {
 
   return (
     <div >
-      {isLoading && <div className="d-flex align-items-center justify-content-center" style={{height: '100vh'}}><h3>Loading...</h3></div>}
+      {isLoading && <div className="d-flex justify-content-center align-items-center" style={{height: '100vh'}}>
+        <div className="spinner-border" role="status">
+          <span className="visually-hidden">Loading...</span>
+        </div> 
+      </div>}
       {lineGraphData && barGraphData &&
-        <div className="container" style= {{marginTop: "80px"}}>
+        <div className="container" style= {{paddingTop: "80px", height: '100vh'}}>
           <div className="row">
             <div className="col-md-3">
               <h4>Population: {data.population.toLocaleString()}</h4>
             </div>
             <div className="col-md-3">
-              <h4>Cases: {data.latest_data.confirmed.toLocaleString()}</h4>
+              <h4 >Cases: {data.latest_data.confirmed.toLocaleString()}</h4>
             </div>
             <div className="col-md-3">
               <h4>Deaths: {data.latest_data.deaths.toLocaleString()}</h4>

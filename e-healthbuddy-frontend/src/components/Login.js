@@ -25,10 +25,11 @@ const Login = () => {
         e.preventDefault();
         axios.post('http://localhost:8080/login', login)
             .then(resp => {
-                setUser(resp.data);
-                console.log(resp.data);
+                let user = resp.data;
+                setUser(user);
+                localStorage.setItem('user', JSON.stringify(user));
                 setError(null);
-                if (resp.data.speciality != null) // then it's a doctor
+                if (user.did) // then it's a doctor
                     history.push("/doctor");
                 else  
                     history.push("/patient");
@@ -60,8 +61,8 @@ const Login = () => {
                       <div className="d-grid">
                         <button className="btn btn-lg btn-primary btn-login text-uppercase fw-bold mb-2" type="submit" onClick={handleSignIn}>Sign in</button>
                         <div className="text-center">
-                          <a className="small me-2" href="#">Forgot password?</a>
-                          <a className="small" href="#">Register with us?</a>
+                          <a className="small me-2" href="!#">Forgot password?</a>
+                          <a className="small" href="!#">Register with us?</a>
                         </div>
                       </div>
                       <div className="text-center mt-2" style={{color: 'red', minHeight: '25px'}} dangerouslySetInnerHTML={{__html: error}} />  

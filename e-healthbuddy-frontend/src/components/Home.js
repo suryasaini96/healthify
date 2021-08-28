@@ -1,11 +1,8 @@
-import React, {useContext} from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 import './home.css'
-import { UserContext } from './UserContext'
 
 const Home = () => {
-    const {user, setUser} = useContext(UserContext);
-
     return (
         <div className="video-background-holder">
             <div className="video-background-overlay"></div>

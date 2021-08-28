@@ -72,7 +72,7 @@ http://localhost:8080/consultations/form
 	"patient_id" : 12,
 	"diagnosis" : "Stomach ache",
 	"medicines" : "xyz",
-    	"prognosis" : "Take rest"
+    "prognosis" : "Take rest"
 }
 
 

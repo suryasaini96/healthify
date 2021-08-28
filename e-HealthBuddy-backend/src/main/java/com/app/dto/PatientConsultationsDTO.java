@@ -11,5 +11,5 @@ import lombok.Data;
 @AllArgsConstructor
 public class PatientConsultationsDTO {
 	Patient patient;
-	List<PatientConsultations> patient_consulations;
+	List<PatientConsultations> patient_consultations;
 }

@@ -1,32 +1,27 @@
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
 import FindDoctor from './FindDoctor'
-
+import PatientHistory from './PatientHistory';
+import { UserContext } from './UserContext';
 
 const PatientHome = () => {
-
-    const [component, setComponent] = useState();
-
+    const {user} = useContext(UserContext);
+    const [activeButton, setActiveButton] = useState('find');
+    
     const clickHandler = (e) => {
-        let button = e.target.value;
-        if (button === 'find')
-            setComponent(<FindDoctor/>)
-        else if (button === 'history')
-            setComponent();
+        setActiveButton(e.target.value);
     }
 
     return (
         <div className = 'container' style={{marginTop: '56px'}}>
             <div className = 'row'> 
-                <button onClick={clickHandler} value='find'>Find a doctor</button>
-                <button onClick={clickHandler} value='history'>My History</button>
+                <button type="button" className={`btn btn-outline-dark shadow-none ${activeButton==='find'? 'active': ' '}`} onClick={clickHandler} value='find'>Find a doctor</button>
+                <button type="button" className={`btn btn-outline-dark shadow-none ${activeButton==='history'? 'active': ' '}`}  onClick={clickHandler} value='history'>My History</button>
             </div>
-
             <div className = 'row'>
-                {component}
-            </div> 
-            
+                { activeButton === 'find' && (<FindDoctor/>) }
+                { activeButton === 'history' && (<PatientHistory pid={user.pid}/>)}
+            </div>
         </div>
-        
     )
 }
 

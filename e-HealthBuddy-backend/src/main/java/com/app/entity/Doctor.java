@@ -11,6 +11,8 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -30,6 +32,7 @@ public class Doctor extends Login {
 	private Long did;
 	private String name;
 	@Column(unique = true)
+	@JsonProperty(access = Access.WRITE_ONLY)
 	private Long aadhar;
 	private String address;
 	private String city;

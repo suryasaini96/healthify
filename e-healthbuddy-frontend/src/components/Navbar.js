@@ -3,33 +3,30 @@ import { Link, useHistory, useLocation } from "react-router-dom";
 import { UserContext } from './UserContext';
 
 const Navbar = () => {
-    
     const {user, setUser} = useContext(UserContext);
     const location = useLocation();
     const history = useHistory();
 
     const logoutHandler = (e) => {
         setUser(null);
+        localStorage.removeItem('user');
         history.push('/');
     }
 
     const homepageHandler = () => {
-        if (user == null)
-            return '/';
+        if (user == null) return '/';
         else {
             // If doctor goto doctor's homepage
-            if (user.speciality != null) 
-                return '/doctor';
-            else  
-                return '/patient';
+            if (user.did) return '/doctor';
+            else  return '/patient';
         }
     }
 
     return (
         <div>
-            <nav className={`navbar fixed-top navbar-expand-md navbar-dark ${location.pathname=='/'? 'bg-transparent': 'bg-dark'}`} aria-label="Navbar">
+            <nav className={`navbar fixed-top navbar-expand-md navbar-dark ${location.pathname==='/'? 'bg-transparent': 'bg-dark'}`} aria-label="Navbar">
                 <div className="container">
-                    <Link to="/" className="navbar-brand" ><span><i class="fa fa-h-square me-2" aria-hidden="true"/>Healthify</span></Link>
+                    <Link to="/" className="navbar-brand" ><span><i className="fa fa-h-square me-2" aria-hidden="true"/>Healthify</span></Link>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
@@ -41,14 +38,14 @@ const Navbar = () => {
                         </ul>
 
                         {
-                            user ? (<div class="dropdown text-end">
-                                        <a href="#" class="d-block link-light text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                                            <i class="fa fa-user text-white fs-5 ms-2" />
+                            user ? (<div className="dropdown text-end">
+                                        <a href="!#" className="d-block link-light text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                                            {user.name} <i className="fa fa-user text-white fs-5 ms-2" />
                                         </a>
-                                        <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
-                                            <li><a class="dropdown-item" href="#">Profile</a></li>
-                                            <li><hr class="dropdown-divider" /></li>
-                                            <li><a class="dropdown-item" href="#" role="button" onClick={logoutHandler}>Sign out</a></li>
+                                        <ul className="dropdown-menu text-small" aria-labelledby="dropdownUser1">
+                                            <li><a className="dropdown-item" href="!#">Profile</a></li>
+                                            <li><hr className="dropdown-divider" /></li>
+                                            <li><a className="dropdown-item" href="!#" role="button" onClick={logoutHandler}>Sign out</a></li>
                                         </ul>
                                     </div>)
                                 :
