@@ -45,7 +45,7 @@ const Navbar = () => {
                                         <ul className="dropdown-menu text-small" aria-labelledby="dropdownUser1">
                                             <li><a className="dropdown-item" href="!#">Profile</a></li>
                                             <li><hr className="dropdown-divider" /></li>
-                                            <li><a className="dropdown-item" href="!#" role="button" onClick={logoutHandler}>Sign out</a></li>
+                                            <li><a className="dropdown-item" role="button" onClick={logoutHandler}>Sign out</a></li>
                                         </ul>
                                     </div>)
                                 :

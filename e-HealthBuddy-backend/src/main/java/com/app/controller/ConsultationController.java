@@ -51,13 +51,19 @@ public class ConsultationController {
 	DoctorRepository doctorRepository;
 	
 	@GetMapping("/patient/{patient_id}")
-	public ResponseEntity<PatientConsultationsDTO> patientHistory(@PathVariable Long patient_id) {
-		return new ResponseEntity<PatientConsultationsDTO>(patientService.findByIdGroupByDoctor(patient_id), HttpStatus.OK);
+	public ResponseEntity<?> patientHistory(@PathVariable Long patient_id) {
+		PatientConsultationsDTO patientConsultationsDTO = patientService.findByIdGroupByDoctor(patient_id);
+		if (patientConsultationsDTO.getPatient()!=null)
+			return new ResponseEntity<PatientConsultationsDTO>(patientConsultationsDTO, HttpStatus.OK);
+		return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
 	}
 	
 	@GetMapping("/doctor/{doctor_id}")
-	public ResponseEntity<DoctorConsultationsDTO> doctorHistory(@PathVariable Long doctor_id) {
-		return new ResponseEntity<DoctorConsultationsDTO>(doctorService.findByIdGroupByPatient(doctor_id), HttpStatus.OK);
+	public ResponseEntity<?> doctorHistory(@PathVariable Long doctor_id) {
+		DoctorConsultationsDTO doctorConsultationsDTO = doctorService.findByIdGroupByPatient(doctor_id);
+		if (doctorConsultationsDTO.getDoctor()!=null)
+			return new ResponseEntity<DoctorConsultationsDTO>(doctorConsultationsDTO, HttpStatus.OK);
+		return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
 	}
 	
 	@PostMapping("/form")

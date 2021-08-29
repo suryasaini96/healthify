@@ -60,8 +60,8 @@ const FindDoctor = () => {
                     })  
                     setDatatable(prevState=>({...prevState, rows: data}));
                     setError(null);   
-                }).catch(err=> {
-                    console.log(err);
+                }).catch(() => {
+                    setError('Error in fetching data.');
                 })
         } else {
             setError('Please enter both fields!')
