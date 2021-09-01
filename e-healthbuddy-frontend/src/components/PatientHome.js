@@ -12,10 +12,12 @@ const PatientHome = () => {
     }
 
     return (
-        <div className = 'container' style={{marginTop: '56px'}}>
-            <div className = 'row'> 
-                <button type="button" className={`btn btn-outline-dark shadow-none rounded-pill ${activeButton==='find'? 'active': ' '}`} onClick={clickHandler} value='find'>Find a doctor</button>
-                <button type="button" className={`btn btn-outline-dark shadow-none rounded-pill ${activeButton==='history'? 'active': ' '}`}  onClick={clickHandler} value='history'>My History</button>
+        <div className = 'container d-flex flex-column align-items-center justify-content-center' style={{ height: '70vh'}}>
+            <div className = 'row'>
+                <div className = "btn-group"> 
+                    <button type="button" style={{width: "400px"}} className={`btn me-4 btn-lg btn-outline-dark shadow-none rounded-pill ${activeButton==='find'? 'active': ' '}`} onClick={clickHandler} value='find'>Find a doctor</button>
+                    <button type="button" style={{width: "400px"}} className={`btn btn-lg btn-outline-dark shadow-none rounded-pill ${activeButton==='history'? 'active': ' '}`}  onClick={clickHandler} value='history'>My History</button>
+                </div>
             </div>
             <div className = 'row'>
                 { activeButton === 'find' && (<FindDoctor/>) }

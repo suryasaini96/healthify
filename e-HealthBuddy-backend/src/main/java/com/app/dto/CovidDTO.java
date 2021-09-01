@@ -1,4 +1,4 @@
-package com.app.pojos;
+package com.app.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -7,7 +7,7 @@ import lombok.Data;
 
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class DataObject<T> {
+public class CovidDTO<T> {
 	@JsonProperty("data")
 	T data;
 }

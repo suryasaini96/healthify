@@ -69,19 +69,25 @@ const FindDoctor = () => {
     }
 
     return (
-        <div className = 'container'>
-            <div className = 'row'> 
-                <div className = "col-md-8">
-                    <input id='city' type = "text" placeholder = "City" onChange = {inputHandler}/> 
-                    <input id='speciality' type = "text" placeholder = "Speciality" onChange = {inputHandler}/>
-                    <span className="text-center ms-2" style={{color: 'red'}} dangerouslySetInnerHTML={{__html: error}} /> 
+        <>
+            <div className = 'container d-flex flex-column align-items-center justify-content-center'>
+                <div className="row mt-1" style={{minHeight: "30px"}}>
+                <span className="text-center ms-2 lead" style={{color: 'red'}} dangerouslySetInnerHTML={{__html: error}} />
                 </div>
-                <div className = "col-md-4">
-                    <button onClick={searchHandler}>Search</button>
-                </div> 
+                <div className = 'row'> 
+                    <div className ="btn-group">
+                        <input id='city' className = "me-2" type = "text" placeholder = "City" onChange = {inputHandler}/> 
+                        <input id='speciality' className = "me-2" type = "text" placeholder = "Speciality" onChange = {inputHandler}/>
+                        <button className = "btn btn-success" onClick={searchHandler}>Search</button>
+                    </div>
+                </div>
+                
+                
             </div>
-            <MDBDataTableV5 hover entriesOptions={[5, 10, 15, 20]} entries={5} pagesAmount={4} data={datatable} />
-        </div>
+            <div className="mt-3">
+                <MDBDataTableV5 hover entriesOptions={[5, 10, 15, 20]} entries={5} pagesAmount={4} data={datatable} />
+            </div>
+        </>
     )
 }
 

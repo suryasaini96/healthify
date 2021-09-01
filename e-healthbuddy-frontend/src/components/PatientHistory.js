@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 
 export default function PatientHistory({pid, consult}) {
   const [found, setFound] = useState(true);
+  const [patient, setPatient] = useState();  
   const [datatable, setDatatable] = useState({
     columns: [
       {
@@ -61,6 +62,7 @@ export default function PatientHistory({pid, consult}) {
       axios.get(`http://localhost:8080/consultations/patient/${pid}`)
           .then(resp => {
               const data = resp.data;
+              setPatient(data.patient);
               let rows = [];
               data.patient_consultations.forEach(c=>{
                 c.consultations.forEach(cons=>{
@@ -77,6 +79,7 @@ export default function PatientHistory({pid, consult}) {
                 })
               })
               setDatatable(prevState=>({...prevState, rows}));
+              setFound(true);
           }).catch(() => {
               setDatatable(prevState=>({...prevState, rows: []}));
               setFound(false);
@@ -84,9 +87,37 @@ export default function PatientHistory({pid, consult}) {
   },[pid]);
 
   return (
-    <div>
-      <MDBDataTableV5 hover entriesOptions={[5, 10, 15, 20]} entries={5} pagesAmount={4} data={datatable} />
-      {found && consult ? <Link to={`/consult/${pid}`} className="btn btn-primary">Consult</Link> : ''}
+    <div className="container d-flex flex-column align-items-center justify-content-center">  
+      { found && consult && patient && 
+        <div class="container">
+          <div class="row">
+            <div class="col-2">
+              <p>Patient ID: {patient.pid}</p>
+            </div>
+            <div class="col-2">
+              <p>Name: {patient.name}</p>
+            </div>
+            <div class="col-2">
+              <p>Mobile: {patient.mobile}</p>
+            </div>
+            <div class="col-2">
+              <p>Email: {patient.email}</p>
+            </div>
+            <div class="col-2">
+              <p>Address: {patient.address}</p>
+            </div>
+            <div class="col-2">
+              <p>City: {patient.city}</p>
+            </div>
+          </div>
+          </div>
+      }
+      <div className = 'row mt-4'>
+        <MDBDataTableV5 hover entriesOptions={[5, 10, 15, 20]} entries={5} pagesAmount={4} data={datatable} />
+      </div>
+      <div>
+        {found && consult ? <Link to={{pathname: '/consult', state: {patient: JSON.stringify(patient)}}} className="btn btn-primary">Consult</Link> : ''}
+      </div>
     </div>
   );
 }

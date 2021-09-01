@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -33,8 +34,11 @@ public class Consultation {
 	@JsonFormat(pattern="yyyy-MM-dd")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate date;
+	@NotNull
 	private String prognosis;
+	@NotNull
 	private String medicines;
+	@NotNull
 	private String diagnosis;
 	
 	@JsonBackReference

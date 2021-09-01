@@ -11,7 +11,6 @@ const About = () => {
                         <div className="col-lg-6">
                             <h1 className="display-4">About us</h1>
                             <p className="lead mb-0">Healthify is our effort to simply the lives of millions of users by providing easy to access centralized system for all there needs.</p>
-                            <p className="lead text-muted">Designed with love in India.</p>
                         </div>
                         <div className="col-lg-6 d-none d-lg-block"><img src="images/about.png" alt="" className="img-fluid" /></div>
                     </div>
@@ -23,7 +22,7 @@ const About = () => {
                     <div className="row align-items-center mb-5">
                         <div className="col-lg-6 order-2 order-lg-1"><i className="fas fa-heartbeat fa-2x mb-3 text-primary" ></i> 
                             <h2 className="font-weight-light">What is Healthify?</h2>
-                            <p className="font-italic text-muted mb-4">Healthify helps people track their health history through centralized, secure and accurate information and much more. We make tracking simpler, because getting information doesn’t need to be any harder!</p>
+                            <p className="font-italic text-muted mb-4">Healthify helps people track their health history through a centralized and secure place. All other health information is accurate and according to medical standards. We make tracking simpler, because getting information doesn’t need to be any harder!</p>
                         </div>
                         <div className="col-lg-5 px-5 mx-auto order-1 order-lg-2"><img src="images/healthify.jpg" alt="" className="img-fluid mb-4 mb-lg-0" /></div>
                     </div>
@@ -31,7 +30,7 @@ const About = () => {
                         <div className="col-lg-5 px-5 mx-auto"><img src="images/more.png" alt="" className="img-fluid mb-4 mb-lg-0" /></div>
                         <div className="col-lg-6"><i className="fas fa-mortar-pestle fa-2x mb-3 text-primary"></i>
                             <h2 className="font-weight-light">More than just an app</h2>
-                            <p className="font-italic text-muted mb-4">Healthify is also a consultation platform for doctors who after seeing your history can also give better suggestions for staying healthy and fit. It is also a source of latest health related blogs and trends!</p>
+                            <p className="font-italic text-muted mb-4">Healthify is also a consultation platform for doctors which after seeing your history can also give better suggestions for staying healthy and fit. It is also a source of latest health related blogs and trends!</p>
                         </div>
                     </div>
                 </div>
@@ -43,6 +42,7 @@ const About = () => {
                         <div className="col-lg-5">
                             <h2 className="display-4 font-weight-light text-white">Our team</h2>
                             <p className="font-italic text-light">Meet our veterans from various domains.</p>
+                            <p className="lead text-muted">Designed with love in India.</p>
                         </div>
                     </div>
 

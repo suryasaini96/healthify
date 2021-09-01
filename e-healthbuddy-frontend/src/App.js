@@ -8,6 +8,8 @@ import { UserContext } from './components/UserContext.js';
 import {useState} from 'react';
 import PatientHome from './components/PatientHome.js';
 import DoctorHome from './components/DoctorHome.js';
+import RegistrationForm from './components/RegistrationForm';
+import ConsultationForm from './components/ConsultationForm';
 
 function App() {
 
@@ -22,11 +24,11 @@ function App() {
           <Route exact path="/" component={Home}></Route>
           <Route exact path="/patient" component={PatientHome}></Route>
           <Route exact path="/doctor" component={DoctorHome}></Route>
-          {/* <Route exact path="/consult/:patient_id" component={ConsultationForm}></Route> */}
+          <Route exact path="/consult" component={ConsultationForm}></Route>
           <Route exact path="/covid-tracker" component={CovidTracker}></Route>
           <Route exact path="/about" component={About}></Route>
           <Route exact path="/login" component={Login}></Route>
-          {/* <Route exact path="/register" component={Register}></Route> */}
+          <Route exact path="/register" component={RegistrationForm}></Route>
         </UserContext.Provider>
       </Switch>
     </Router>

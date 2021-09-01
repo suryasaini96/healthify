@@ -7,18 +7,19 @@ const Navbar = () => {
     const location = useLocation();
     const history = useHistory();
 
-    const logoutHandler = (e) => {
+    const logoutHandler = () => {
         setUser(null);
         localStorage.removeItem('user');
         history.push('/');
     }
 
-    const homepageHandler = () => {
-        if (user == null) return '/';
+    const dashboardHandler = () => {
+        if (user==null)
+            return '/login';
         else {
-            // If doctor goto doctor's homepage
-            if (user.did) return '/doctor';
-            else  return '/patient';
+            if (user.did)
+                return '/doctor';
+            return '/patient';
         }
     }
 
@@ -32,27 +33,27 @@ const Navbar = () => {
                     </button>
                     <div className="collapse navbar-collapse" id="navbarsExample04">
                         <ul className="navbar-nav me-auto mb-2 mb-md-0">
-                            <Link to={homepageHandler} className="nav-link px-2 text-white"><li>Home</li></Link>
+                            <Link to={dashboardHandler} className="nav-link px-2 text-white"><li>Dashboard</li></Link>
                             <Link to="/covid-tracker" className="nav-link px-2 text-white"><li>Covid-Tracker</li></Link>
+                            <Link to="/blogs" className="nav-link px-2 text-white"><li>Blogs</li></Link>
                             <Link to="/about" className="nav-link px-2 text-white"><li>About</li></Link>
                         </ul>
-
-                        {
-                            user ? (<div className="dropdown text-end">
-                                        <a href="!#" className="d-block link-light text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                                            {user.name} <i className="fa fa-user text-white fs-5 ms-2" />
-                                        </a>
-                                        <ul className="dropdown-menu text-small" aria-labelledby="dropdownUser1">
-                                            <li><a className="dropdown-item" href="!#">Profile</a></li>
-                                            <li><hr className="dropdown-divider" /></li>
-                                            <li><a className="dropdown-item" role="button" onClick={logoutHandler}>Sign out</a></li>
-                                        </ul>
-                                    </div>)
-                                :
-                                (<div className="text-end">
-                                    <Link to="/login"><button type="button" className="btn btn-outline-light me-2">Login</button></Link>
-                                    <Link to="/register"><button type="button" className="btn btn-warning me-2">Sign-up</button></Link>
-                                </div>)
+                        { user ?
+                            (<div className="dropdown text-end">
+                                <a href="!#" className="d-block link-light text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                                    {user.did?`Dr. ${user.name}`: user.name}<i className="fa fa-user text-white fs-5 ms-2" />
+                                </a>
+                                <ul className="dropdown-menu text-small" aria-labelledby="dropdownUser1">
+                                    {/* <li><a className="dropdown-item" href="!#">Profile</a></li>
+                                    <li><hr className="dropdown-divider" /></li> */}
+                                    <li><a className="dropdown-item" role="button" onClick={logoutHandler}>Sign out</a></li>
+                                </ul>
+                            </div>)
+                            :
+                            (<div className="text-end">
+                                <Link to="/login"><button type="button" className="btn btn-outline-light me-2">Login</button></Link>
+                                <Link to="/register"><button type="button" className="btn btn-warning me-2">Sign-up</button></Link>
+                            </div>)
                         }
                     </div>
                 </div>

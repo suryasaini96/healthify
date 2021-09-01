@@ -7,8 +7,8 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import com.app.dto.CovidDTO;
 import com.app.pojos.Country;
-import com.app.pojos.DataObject;
 import com.app.pojos.LatestData;
 import com.app.pojos.Timeline;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -36,7 +36,7 @@ public class CovidTrackerService {
 		Country country = null;
 		try {
 			String data = restTemplate.getForObject("https://corona-api.com/countries/" + code, String.class);
-			country = objectMapper.readValue(data, new TypeReference<DataObject<Country>>(){}).getData();
+			country = objectMapper.readValue(data, new TypeReference<CovidDTO<Country>>(){}).getData();
 		} catch (JsonProcessingException e) {
 			e.printStackTrace();
 		}
@@ -48,7 +48,7 @@ public class CovidTrackerService {
 		Country country = null;
 		try {
 			String data = restTemplate.getForObject("https://corona-api.com/timeline", String.class);
-			Timeline[] timelines = objectMapper.readValue(data, new TypeReference<DataObject<Timeline[]>>(){}).getData();
+			Timeline[] timelines = objectMapper.readValue(data, new TypeReference<CovidDTO<Timeline[]>>(){}).getData();
 			LatestData latestData = new LatestData(timelines[0].getDeaths(), timelines[0].getConfirmed(), timelines[0].getRecovered());
 			country = new Country("global","global", Long.valueOf(7800000000L),latestData, Arrays.asList(timelines));
 		} catch (JsonProcessingException e) {

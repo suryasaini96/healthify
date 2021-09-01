@@ -9,11 +9,11 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.app.dto.PatientConsultations;
 import com.app.dto.PatientConsultationsDTO;
 import com.app.entity.Consultation;
 import com.app.entity.Doctor;
 import com.app.entity.Patient;
+import com.app.pojos.PatientConsultations;
 import com.app.repository.ConsultationRepository;
 import com.app.repository.PatientRepository;
 

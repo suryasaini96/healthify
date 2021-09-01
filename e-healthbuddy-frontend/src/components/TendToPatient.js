@@ -71,12 +71,18 @@ const TendToPatient = () => {
 
     return (
         <div className="container d-flex flex-column align-items-center justify-content-center">
-            <div className="row">
-                <input id="inp" type="text" placeholder="Enter patient id to check history..."></input>
-                <button type="button" className="btn btn-primary" onClick={searchHandler}>Search</button>
-                <span className="text-center ms-2" style={{color: 'red'}} dangerouslySetInnerHTML={{__html: error}} />
+            <div className="row" style={{minHeight: "30px"}}>
+              <span className="text-center ms-2 lead" style={{color: 'red'}} dangerouslySetInnerHTML={{__html: error}} />
             </div>
-            {search ? <PatientHistory pid={patient_id} consult={true}/> : <MDBDataTableV5 hover entriesOptions={[5, 10, 15, 20]} entries={5} pagesAmount={4} data={datatable} />}
+            <div className="row mt-1">
+              <div className ="btn-group">
+                <input id="inp" type="text" placeholder="Enter Patient ID..."></input>
+                <button type="button" className="btn btn-success ms-2" onClick={searchHandler}>Search</button>       
+              </div>
+            </div>
+            <div className="mt-2"> 
+              {search ? <PatientHistory pid={patient_id} consult={true}/> : <MDBDataTableV5 hover entriesOptions={[5, 10, 15, 20]} entries={5} pagesAmount={4} data={datatable} />}
+            </div>
         </div>
     )
 }

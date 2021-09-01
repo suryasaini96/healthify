@@ -8,7 +8,7 @@ const Login = () => {
 
     const {setUser} = useContext(UserContext);
     const [login,setLogin] = useState();
-    const [error, setError] = useState(null);
+    const [error, setError] = useState();
     const history = useHistory(); 
     
     const setData = (event) => {

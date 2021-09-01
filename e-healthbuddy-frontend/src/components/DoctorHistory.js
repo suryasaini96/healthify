@@ -86,8 +86,10 @@ const DoctorHistory = ({did}) => {
     },[did]);
 
   return (
-    <div>
-      <MDBDataTableV5 hover entriesOptions={[5, 10, 15, 20]} entries={5} pagesAmount={4} data={datatable} />
+    <div className="container d-flex flex-column align-items-center justify-content-center">
+        <div className = 'row mt-4'>
+            <MDBDataTableV5 hover entriesOptions={[5, 10, 15, 20]} entries={5} pagesAmount={4} data={datatable} />
+        </div>
     </div>
   );
 }
