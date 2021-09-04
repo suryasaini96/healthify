@@ -1,2 +1,2 @@
-# e-healthbuddy
+# Healthify
 An extensive health management system
