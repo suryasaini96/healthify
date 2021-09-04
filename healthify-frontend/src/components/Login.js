@@ -1,8 +1,9 @@
-import axios from 'axios';
 import React, {useState, useContext} from 'react'
 import { useHistory } from 'react-router';
 import './login.css'
 import { UserContext } from './UserContext';
+import { Link } from 'react-router-dom';
+import ApiService from '../services/ApiService';
 
 const Login = () => {
 
@@ -23,7 +24,7 @@ const Login = () => {
 
     const handleSignIn = (e) => {
         e.preventDefault();
-        axios.post('http://localhost:8080/login', login)
+        ApiService.login(login)
             .then(resp => {
                 let user = resp.data;
                 setUser(user);
@@ -61,8 +62,8 @@ const Login = () => {
                       <div className="d-grid">
                         <button className="btn btn-lg btn-primary btn-login text-uppercase fw-bold mb-2" type="submit" onClick={handleSignIn}>Sign in</button>
                         <div className="text-center">
-                          <a className="small me-2" href="!#">Forgot password?</a>
-                          <a className="small" href="!#">Register with us?</a>
+                          {/* <a className="small me-2" href="!#">Forgot password?</a> */}
+                          <Link to="/register"><a className="small" href="!#">Register with us?</a></Link>
                         </div>
                       </div>
                       <div className="text-center mt-2" style={{color: 'red', minHeight: '25px'}} dangerouslySetInnerHTML={{__html: error}} />  

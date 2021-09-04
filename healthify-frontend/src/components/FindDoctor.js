@@ -1,6 +1,6 @@
-import axios from "axios";
 import { MDBDataTableV5 } from "mdbreact";
 import {useState} from 'react';
+import ApiService from "../services/ApiService";
 
 const FindDoctor = () => {
     const [search, setSearch] = useState(null);
@@ -20,7 +20,7 @@ const FindDoctor = () => {
           {
             label: 'Address',
             field: 'address',
-            width: 200,
+            width: 250,
           },
           {
             label: 'Mobile',
@@ -47,7 +47,7 @@ const FindDoctor = () => {
 
     const searchHandler = () => {
         if (search && search.city && search.speciality) {
-            axios.get(`http://localhost:8080/doctor/city/${search.city}?speciality=${search.speciality}`)
+            ApiService.findDoctor(search.city, search.speciality)
                 .then(resp => {
                     const data = resp.data.map(doctor => {
                         return {
@@ -68,24 +68,30 @@ const FindDoctor = () => {
         }
     }
 
+    const enterPressed = (event) => {
+        if (event.key === 'Enter') {
+            searchHandler();
+        }
+    }
+
     return (
         <>
             <div className = 'container d-flex flex-column align-items-center justify-content-center'>
                 <div className="row mt-1" style={{minHeight: "30px"}}>
                 <span className="text-center ms-2 lead" style={{color: 'red'}} dangerouslySetInnerHTML={{__html: error}} />
                 </div>
-                <div className = 'row'> 
+                <div className = 'row mt-1'> 
                     <div className ="btn-group">
-                        <input id='city' className = "me-2" type = "text" placeholder = "City" onChange = {inputHandler}/> 
-                        <input id='speciality' className = "me-2" type = "text" placeholder = "Speciality" onChange = {inputHandler}/>
+                        <input id='city' className = "me-2" type = "text" placeholder = "City" onChange = {inputHandler} onKeyPress={enterPressed}/> 
+                        <input id='speciality' className = "me-2" type = "text" placeholder = "Speciality" onChange = {inputHandler} onKeyPress={enterPressed}/>
                         <button className = "btn btn-success" onClick={searchHandler}>Search</button>
                     </div>
                 </div>
                 
                 
             </div>
-            <div className="mt-3">
-                <MDBDataTableV5 hover entriesOptions={[5, 10, 15, 20]} entries={5} pagesAmount={4} data={datatable} />
+            <div className="mt-4">
+                <MDBDataTableV5 small scrollY scrollX hover entriesOptions={[5, 10, 15, 20]} entries={5} pagesAmount={4} data={datatable} />
             </div>
         </>
     )

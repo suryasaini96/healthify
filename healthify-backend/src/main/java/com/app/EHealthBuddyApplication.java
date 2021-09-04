@@ -31,16 +31,20 @@ public class EHealthBuddyApplication {
 	
 	@PostConstruct
 	public void initDB() {
-		Patient patient = new Patient(Long.valueOf(12), "Surya", Long.valueOf(7746), LocalDate.parse("1996-11-12"),"H-228","Delhi", Long.valueOf(7291885612L), new ArrayList<>());
-		Doctor doctor = new Doctor(Long.valueOf(100), "Ramesh", Long.valueOf(8989), "Patel Nagar", "Delhi", Long.valueOf(92929292L), "dentist", new ArrayList<>());
-		patient.setEmail("ss@gmail.com");
-		patient.setPassword("helloWorld");
-		doctor.setEmail("ramesh@gmail.com");
-		doctor.setPassword("docpass");
+		Patient patient = new Patient(Long.valueOf(12), "Satyam Srivastava", Long.valueOf(111122223333L), LocalDate.parse("1991-02-18"),"135, Kanshi Ram Shah Marg, Block GH 14, Paschim Vihar","Delhi", Long.valueOf(9990843434L), new ArrayList<>());
+		Doctor doctor1 = new Doctor(Long.valueOf(100), "Ajay Sharma", Long.valueOf(222233334444L), "F-87, Pocket F, Phase 1, Ashok Vihar", "Delhi", Long.valueOf(9311733366L), "Cardiologist", new ArrayList<>());
+		Doctor doctor2 = new Doctor(Long.valueOf(200), "Manoj Jain", Long.valueOf(333344445555L), "B-362, Near to ICICI Bank, Block B, Meera Bagh, Paschim Vihar", "Delhi", Long.valueOf(9837199390L), "Dermatologist", new ArrayList<>());
+		patient.setEmail("satyam@gmail.com"); 
+		patient.setPassword("satyam");
+		doctor1.setEmail("ajay@gmail.com");
+		doctor1.setPassword("ajay");
+		doctor2.setEmail("manoj@gmail.com");
+		doctor2.setPassword("manoj");
 		patientRepository.save(patient);
-		doctorRepository.save(doctor);
-		Consultation consultation1 = new Consultation( LocalDate.parse("2021-08-19"), "prognosis", "medicines", "diagnosis", patient, doctor);
-		Consultation consultation2 = new Consultation( LocalDate.parse("2021-08-21"), "prog", "paracetamol", "fever", patient, doctor);
+		doctorRepository.save(doctor1);
+		doctorRepository.save(doctor2);
+		Consultation consultation1 = new Consultation(LocalDate.parse("2021-08-19"), "Heart failure", "Lescol XL, Ranolazine, Nitroglycerin", "Coronary Artery Disease", patient, doctor1);
+		Consultation consultation2 = new Consultation(LocalDate.parse("2021-09-02"), "Toxic epidermal necrolysis (TEN)", "Dexamethasone, Ibuprofen", "Stevens-Johnson Syndrome", patient, doctor2);
 		consultationRepository.save(consultation1);
 		consultationRepository.save(consultation2);
 	}

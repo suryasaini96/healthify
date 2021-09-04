@@ -2,8 +2,8 @@ import React from 'react';
 import { MDBDataTableV5 } from 'mdbreact';
 import { useEffect } from 'react';
 import { useState } from 'react';
-import axios from 'axios';
 import { Link } from 'react-router-dom';
+import ApiService from '../services/ApiService';
 
 export default function PatientHistory({pid, consult}) {
   const [found, setFound] = useState(true);
@@ -13,26 +13,22 @@ export default function PatientHistory({pid, consult}) {
       {
         label: 'Doctor',
         field: 'name',
-        width: 100,
-        attributes: {
-          'aria-controls': 'DataTable',
-          'aria-label': 'Name',
-        },
+        width: 110,
       },
       {
         label: 'Doctor Address',
         field: 'address',
-        width: 100,
+        width: 270,
       },
       {
         label: 'Doctor Mobile',
         field: 'mobile',
-        width: 100,
+        width: 150,
       },
       {
         label: 'Consultation ID',
         field: 'cid',
-        width: 100,
+        width: 151,
       },
       {
         label: 'Date',
@@ -59,7 +55,7 @@ export default function PatientHistory({pid, consult}) {
   });
 
   useEffect(() => {
-      axios.get(`http://localhost:8080/consultations/patient/${pid}`)
+      ApiService.patientConsultations(pid)
           .then(resp => {
               const data = resp.data;
               setPatient(data.patient);
@@ -88,32 +84,33 @@ export default function PatientHistory({pid, consult}) {
 
   return (
     <div className="container d-flex flex-column align-items-center justify-content-center">  
-      { found && consult && patient && 
-        <div class="container">
-          <div class="row">
-            <div class="col-2">
-              <p>Patient ID: {patient.pid}</p>
-            </div>
-            <div class="col-2">
-              <p>Name: {patient.name}</p>
-            </div>
-            <div class="col-2">
-              <p>Mobile: {patient.mobile}</p>
-            </div>
-            <div class="col-2">
-              <p>Email: {patient.email}</p>
-            </div>
-            <div class="col-2">
-              <p>Address: {patient.address}</p>
-            </div>
-            <div class="col-2">
-              <p>City: {patient.city}</p>
-            </div>
-          </div>
-          </div>
+      { found && consult && patient &&
+        <table class="table caption-top">
+          <caption className="text-center"><b>Patient Details</b></caption>
+          <thead class = "table-dark">
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Mobile</th>
+                <th>Email</th>
+                <th>Address</th>
+                <th>City</th>
+              </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td >{patient.pid}</td>
+              <td>{patient.name}</td>
+              <td>{patient.mobile}</td>
+              <td>{patient.email}</td>
+              <td>{patient.address}</td>
+              <td>{patient.city}</td>
+            </tr>
+          </tbody>
+        </table>
       }
       <div className = 'row mt-4'>
-        <MDBDataTableV5 hover entriesOptions={[5, 10, 15, 20]} entries={5} pagesAmount={4} data={datatable} />
+        <MDBDataTableV5 small scrollX hover entriesOptions={[5, 10, 15, 20]} entries={5} pagesAmount={4} data={datatable} />
       </div>
       <div>
         {found && consult ? <Link to={{pathname: '/consult', state: {patient: JSON.stringify(patient)}}} className="btn btn-primary">Consult</Link> : ''}

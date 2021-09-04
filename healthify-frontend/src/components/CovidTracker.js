@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
-import axios from 'axios';
 import { LineChart, BarChart, Bar, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from "recharts";
+import ApiService from "../services/ApiService";
 
 const CovidTracker = () => {
     const [data, setData] = useState({
@@ -16,7 +16,7 @@ const CovidTracker = () => {
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(()=>{
-      axios.get('http://localhost:8080/covid-api/in')
+      ApiService.covidTracker()
         .then(resp => {
           const timeline_data = resp.data.timeline.reverse().filter(data=> data.recovered!==0);
           const recent_data = resp.data.timeline.reverse().slice(0,7).reverse();

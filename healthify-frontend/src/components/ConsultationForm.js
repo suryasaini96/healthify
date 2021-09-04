@@ -1,7 +1,7 @@
 import { useHistory, useLocation } from "react-router-dom";
 import { useContext } from 'react';
-import axios from "axios";
 import { UserContext } from './UserContext';
+import ApiService from "../services/ApiService";
 
 const ConsultationForm = () => {
     const {user} = useContext(UserContext);
@@ -20,7 +20,7 @@ const ConsultationForm = () => {
             medicines: document.getElementById('medicines').value,
             prognosis: document.getElementById('prognosis').value
         }
-        axios.post("http://localhost:8080/consultations/form", data)
+        ApiService.giveConsultation(data)
             .then(resp => {
                 history.push({
                     pathname: '/doctor',
@@ -35,7 +35,7 @@ const ConsultationForm = () => {
         
         <div className="container d-flex flex-column align-items-center justify-content-center" style={{minHeight: "100vh", width: "40%"}}>
             {patient && <div>
-                <h3 className="mb-5 text-center">Consultation Form</h3>
+                <h1 className="display-6 text-center mb-5 ">Consultation Form</h1>
                 <form className="row g-3">
                     <div className="col-lg-2">
                         <label htmlFor="patient_id" className="form-label">Patient ID</label>

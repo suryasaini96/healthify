@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 const RegistrationForm = () => {
-    const [activeButton, setActiveButton] = useState('user');
+    const [activeButton, setActiveButton] = useState('patient');
     const clickHandler = (e) => {
         setActiveButton(e.target.value);
     }
@@ -9,7 +9,7 @@ const RegistrationForm = () => {
     return (
         <div className="container align-items-center justify-content-center">
             <div className="px-4 py-5 my-5 text-center">
-                <h1 className="display-5 fw-bold">Register Now!</h1>
+                <h1 className="display-5 ">Register Now!</h1>
                 <div className="col-lg-6 mx-auto">
                     <p className="lead mb-4">Get registered now!</p>
                     <div className="d-grid gap-2 d-sm-flex justify-content-sm-center">

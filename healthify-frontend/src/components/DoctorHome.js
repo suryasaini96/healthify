@@ -3,6 +3,7 @@ import TendToPatient from './TendToPatient';
 import DoctorHistory from './DoctorHistory';
 import { UserContext } from './UserContext';
 import { useLocation } from 'react-router-dom';
+import './dashboard.css';
 
 const DoctorHome = () => {
     const {user} = useContext(UserContext);
@@ -14,7 +15,7 @@ const DoctorHome = () => {
     }
 
     return (
-        <div className = 'container d-flex flex-column align-items-center justify-content-center' style={{ minHeight: '70vh', marginTop: "200px"}}>
+        <div className = 'container d-flex flex-column align-items-center justify-content-center dashboard'>
             <div className = "row">
                 <div className = "btn-group"> 
                     <button type="button" style={{width: "400px"}} className={`btn me-4 btn-lg btn-outline-dark shadow-none rounded-pill ${activeButton==='tendToPatient'? 'active': ' '}`} onClick={clickHandler} value='tendToPatient'>Tend to a patient</button>

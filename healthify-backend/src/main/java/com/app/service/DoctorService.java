@@ -27,7 +27,7 @@ public class DoctorService {
 	ConsultationRepository consultationRepository;
 	
 	public List<Doctor> findByCityAndSpeciality(String city, String speciality) {
-		return doctorRepository.findByCityAndSpecialityIgnoreCase(city, speciality);
+		return doctorRepository.findByCityAndSpecialityIgnoreCasePartialMatch(city.trim().toLowerCase(), speciality.trim().toLowerCase());
 	}
 	
 	public Optional<Doctor> findById(Long doctor_id) {

@@ -1,44 +1,39 @@
-import axios from "axios";
 import { useState, useEffect } from "react";
 import { MDBDataTableV5 } from 'mdbreact';
+import ApiService from "../services/ApiService";
 
 const DoctorHistory = ({did}) => {
-    //const [found, setFound] = useState(true);
     const [datatable, setDatatable] = useState({
         columns: [
         {
             label: 'Patient ID',
             field: 'pid',
-            width: 100,
+            width: 110,
         },
         {
             label: 'Patient',
             field: 'name',
             width: 100,
-            attributes: {
-            'aria-controls': 'DataTable',
-            'aria-label': 'Name',
-            },
         },
         {
             label: 'Patient Address',
             field: 'address',
-            width: 200,
+            width: 250,
         },
         {
             label: 'Patient Mobile',
             field: 'mobile',
-            width: 100,
+            width: 150,
         },
         {
             label: 'Consultation ID',
             field: 'cid',
-            width: 200,
+            width: 151,
         },
         {
             label: 'Date',
             field: 'date',
-            width: 200,
+            width: 100,
         },
         {
             label: 'Diagnosis',
@@ -60,7 +55,7 @@ const DoctorHistory = ({did}) => {
     });
 
     useEffect(() => {
-        axios.get(`http://localhost:8080/consultations/doctor/${did}`)
+        ApiService.doctorConsultations(did)
             .then(resp => {
                 const data = resp.data;
                 let rows = [];
@@ -88,7 +83,7 @@ const DoctorHistory = ({did}) => {
   return (
     <div className="container d-flex flex-column align-items-center justify-content-center">
         <div className = 'row mt-4'>
-            <MDBDataTableV5 hover entriesOptions={[5, 10, 15, 20]} entries={5} pagesAmount={4} data={datatable} />
+            <MDBDataTableV5 small scrollX hover entriesOptions={[5, 10, 15, 20]} entries={5} pagesAmount={4} data={datatable} />
         </div>
     </div>
   );
