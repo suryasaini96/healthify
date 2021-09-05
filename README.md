@@ -15,4 +15,4 @@ An extensive health management system
 3. Run the spring boot application in STS/Eclipse by right clicking > Run as Spring Boot application.
 4. Done :)
 
-### Image showcase (coming soon)
+## Image showcase (coming soon)
