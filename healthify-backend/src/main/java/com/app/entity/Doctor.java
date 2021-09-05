@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -26,6 +27,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = false)
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Doctor extends Login {
 	@Id
 	@Column(name = "doctor_id",unique = true)
@@ -40,7 +42,7 @@ public class Doctor extends Login {
 	private Long mobile;
 	private String speciality;
 	
-	@JsonManagedReference
+	@JsonManagedReference(value="doctor_id")
 	@OneToMany(mappedBy = "cid")
 	private List<Consultation> consultations = new ArrayList<>();
 	

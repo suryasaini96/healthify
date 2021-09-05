@@ -41,12 +41,12 @@ public class Consultation {
 	@NotNull
 	private String diagnosis;
 	
-	@JsonBackReference
+	@JsonBackReference(value="patient_id")
 	@ManyToOne
 	@JoinColumn(name = "patient_id")
 	private Patient patient;
 	
-	@JsonBackReference
+	@JsonBackReference(value="doctor_id")
 	@ManyToOne
 	@JoinColumn(name = "doctor_id")
 	private Doctor doctor;

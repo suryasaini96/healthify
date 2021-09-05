@@ -65,4 +65,17 @@ public class DoctorService {
 	public Optional<Doctor> findByEmailAndPassword(String email, String password) {
 		return doctorRepository.findByEmailAndPassword(email, password);
 	}
+	
+	public String registerDoctor(Doctor doctor) {
+		if (doctorRepository.findById(doctor.getDid()).isPresent()) {
+			return "Doctor already exists";
+		} else {
+			try {
+				doctorRepository.save(doctor);
+				return "Doctor registered successfully";
+			} catch (Exception e) {
+				return "Doctor registration failed";
+			}
+		}
+	}
 }

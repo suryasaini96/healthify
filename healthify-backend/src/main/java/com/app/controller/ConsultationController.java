@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.app.dto.ConsultationsFormDTO;
@@ -67,6 +68,7 @@ public class ConsultationController {
 	}
 	
 	@PostMapping("/form")
+	@ResponseBody
 	public String consultPatient(@RequestBody ConsultationsFormDTO consultationForm) {
 		Long patient_id = consultationForm.getPatient_id();
 		Long doctor_id = consultationForm.getDoctor_id();

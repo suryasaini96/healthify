@@ -4,13 +4,15 @@ import './login.css'
 import { UserContext } from './UserContext';
 import { Link } from 'react-router-dom';
 import ApiService from '../services/ApiService';
+import { useLocation } from 'react-router-dom';
 
 const Login = () => {
 
     const {setUser} = useContext(UserContext);
     const [login,setLogin] = useState();
     const [error, setError] = useState();
-    const history = useHistory(); 
+    const history = useHistory();
+    const location = useLocation(); 
     
     const setData = (event) => {
         let data = event.target.value;
@@ -46,9 +48,9 @@ const Login = () => {
           <div className="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
           <div className="col-md-8 col-lg-6">
             <div className="login d-flex align-items-center py-5">
-              <div className="container">
+              <div className="container ">
                 <div className="row">
-                  <div className="col-md-9 col-lg-8 mx-auto">
+                  <div className="col-md-9 col-lg-8 mx-auto my-container">
                     <h3 className="login-heading mb-4" >Welcome back!</h3>
                     <form>
                       <div className="form-floating mb-3">
@@ -60,13 +62,16 @@ const Login = () => {
                         <label htmlFor="floatingPassword">Password</label>
                       </div>  
                       <div className="d-grid">
-                        <button className="btn btn-lg btn-primary btn-login text-uppercase fw-bold mb-2" type="submit" onClick={handleSignIn}>Sign in</button>
+                        <button className="btn btn-lg btn-primary btn-login mb-2" type="submit" onClick={handleSignIn}>Sign in</button>
                         <div className="text-center">
                           {/* <a className="small me-2" href="!#">Forgot password?</a> */}
-                          <Link to="/register"><a className="small" href="!#">Register with us?</a></Link>
+                          <Link to="/register" style={{textDecoration: "none"}}><span id="register-here">Register with us?</span></Link>  
                         </div>
                       </div>
-                      <div className="text-center mt-2" style={{color: 'red', minHeight: '25px'}} dangerouslySetInnerHTML={{__html: error}} />  
+                      <div className="text-center mt-2" style={{color: 'red', minHeight: '25px'}} dangerouslySetInnerHTML={{__html: error}} />
+                      <div className="row" style={{minHeight: "30px"}}>
+                        {location.state && <span className="text-center ms-2 lead" style={{color: 'blue'}} dangerouslySetInnerHTML={{__html: location.state.message}} />}
+                      </div>  
                     </form>
                   </div>
                 </div>

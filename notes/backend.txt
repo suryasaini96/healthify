@@ -60,6 +60,10 @@ http://localhost:8080/consultations/patient/12
 http://localhost:8080/login
 http://localhost:8080/consultations/form
 
+http://localhost:8080/register/patient
+http://localhost:8080/register/doctor
+
+
 /login --- POST Data
 {
 	"email" : "ss@gmail.com",

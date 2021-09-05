@@ -13,6 +13,8 @@ const PATIENT_CONSULTATIONS_API_URL = `${BASE_URL}/consultations/patient`;
 /* POST request URLs*/
 const LOGIN_API_URL = `${BASE_URL}/login`;
 const CONSULTATION_FORM_API_URL = `${BASE_URL}/consultations/form`;
+const PATIENT_REGISTRATION_API_URL = `${BASE_URL}/register/patient`;
+const DOCTOR_REGISTRATION_API_URL = `${BASE_URL}/register/doctor`;
 
 class ApiService { 
     covidTracker() {
@@ -47,6 +49,13 @@ class ApiService {
         return axios.post(CONSULTATION_FORM_API_URL, data); 
     }
 
+    patientRegistration(data) {
+        return axios.post(PATIENT_REGISTRATION_API_URL, data);
+    }
+
+    doctorRegistration(data) {
+        return axios.post(DOCTOR_REGISTRATION_API_URL, data);
+    }
 }
 
 export default new ApiService();
