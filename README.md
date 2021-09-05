@@ -1,6 +1,10 @@
 # Healthify
-An extensive health management system.
-Tech Stack: ReactJS + 3rd party libraries, Spring Boot, Spring Data JPA, HTML, CSS, Bootstrap
+An extensive health management system. <br>
+
+*Tech Stack*: 
+- ReactJS + 3rd party libraries 
+- Spring Boot + Spring Data JPA
+- HTML, CSS, Bootstrap
 
 ## Video Overview @ Youtube
 <p> Click below to watch the video. </p>
