@@ -49,7 +49,8 @@ const About = () => {
                     <div className="row text-center">
                         <div className="col-xl-3 col-sm-6 mb-5">
                             <div className="bg-white rounded shadow-sm py-5 px-4"><img src="images/1.jpeg" alt="" width="100" className="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm" />
-                                <h5 className="mb-0">Surya Saini</h5><span className="small  text-muted">CEO - Founder</span>
+                                <h5 className="mb-0">Surya Saini</h5>
+                                {/* <span className="small  text-muted">CEO - Founder</span> */}
                                 <ul className="social mb-0 list-inline mt-3">
                                     <li className="list-inline-item"><a href="!#" className="social-link"><i className="fab fa-facebook-f"></i></a></li>
                                     <li className="list-inline-item"><a href="!#" className="social-link"><i className="fab fa-instagram"></i></a></li>
@@ -60,7 +61,8 @@ const About = () => {
 
                         <div className="col-xl-3 col-sm-6 mb-5">
                             <div className="bg-white rounded shadow-sm py-5 px-4"><img src="images/5.jpeg" alt="" width="100" className="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm" />
-                                <h5 className="mb-0">Naval Gazta</h5><span className="small text-muted">Designer</span>
+                                <h5 className="mb-0">Naval Gazta</h5>
+                                {/* <span className="small text-muted">Designer</span> */}
                                 <ul className="social mb-0 list-inline mt-3">
                                     <li className="list-inline-item"><a href="!#" className="social-link"><i className="fab fa-facebook-f"></i></a></li>
                                     <li className="list-inline-item"><a href="!#" className="social-link"><i className="fab fa-instagram"></i></a></li>
@@ -70,7 +72,8 @@ const About = () => {
                         </div>
                         <div className="col-xl-3 col-sm-6 mb-5">
                             <div className="bg-white rounded shadow-sm py-5 px-4"><img src="images/2.jpeg" alt="" width="100" className="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm" />
-                                <h5 className="mb-0">Saurabh Mahamuni</h5><span className="small text-muted">Consultant</span>
+                                <h5 className="mb-0">Saurabh Mahamuni</h5>
+                                {/* <span className="small text-muted">Consultant</span> */}
                                 <ul className="social mb-0 list-inline mt-3">
                                     <li className="list-inline-item"><a href="!#" className="social-link"><i className="fab fa-facebook-f"></i></a></li>
                                     <li className="list-inline-item"><a href="!#" className="social-link"><i className="fab fa-instagram"></i></a></li>
@@ -80,7 +83,8 @@ const About = () => {
                         </div>
                         <div className="col-xl-3 col-sm-6 mb-5">
                             <div className="bg-white rounded shadow-sm py-5 px-4"><img src="images/3.jpeg" alt="" width="100" className="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm" />
-                                <h5 className="mb-0">Akshata</h5><span className="small text-muted">Consultant</span>
+                                <h5 className="mb-0">Akshata</h5>
+                                {/* <span className="small text-muted">Consultant</span> */}
                                 <ul className="social mb-0 list-inline mt-3">
                                     <li className="list-inline-item"><a href="!#" className="social-link"><i className="fab fa-facebook-f"></i></a></li>
                                     <li className="list-inline-item"><a href="!#" className="social-link"><i className="fab fa-instagram"></i></a></li>
@@ -90,7 +94,8 @@ const About = () => {
                         </div>
                         <div className="col-xl-3 col-sm-6 mb-5">
                             <div className="bg-white rounded shadow-sm py-5 px-4"><img src="images/4.jpeg" alt="" width="100" className="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm" />
-                                <h5 className="mb-0">Sayali Badgujar</h5><span className="small text-muted">Advisor</span>
+                                <h5 className="mb-0">Sayali Torase</h5>
+                                {/* <span className="small text-muted">Advisor</span> */}
                                 <ul className="social mb-0 list-inline mt-3">
                                     <li className="list-inline-item"><a href="!#" className="social-link"><i className="fab fa-facebook-f"></i></a></li>
                                     <li className="list-inline-item"><a href="!#" className="social-link"><i className="fab fa-instagram"></i></a></li>

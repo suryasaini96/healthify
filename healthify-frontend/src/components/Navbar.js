@@ -35,7 +35,7 @@ const Navbar = () => {
                         <ul className="navbar-nav me-auto mb-2 mb-md-0">
                             <Link to={dashboardHandler} className="nav-link px-2 text-white"><li>Dashboard</li></Link>
                             <Link to="/covid-tracker" className="nav-link px-2 text-white"><li>Covid-Tracker</li></Link>
-                            <Link to="/blogs" className="nav-link px-2 text-white"><li>Blogs</li></Link>
+                            {/* <Link to="/blogs" className="nav-link px-2 text-white"><li>Blogs</li></Link> */}
                             <Link to="/about" className="nav-link px-2 text-white"><li>About</li></Link>
                         </ul>
                         { user ?

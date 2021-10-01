@@ -85,9 +85,9 @@ export default function PatientHistory({pid, consult}) {
   return (
     <div className="container d-flex flex-column align-items-center justify-content-center">  
       { found && consult && patient &&
-        <table class="table caption-top">
+        <table className="table caption-top">
           <caption className="text-center"><b>Patient Details</b></caption>
-          <thead class = "table-dark">
+          <thead className = "table-dark">
               <tr>
                 <th>ID</th>
                 <th>Name</th>
@@ -110,7 +110,7 @@ export default function PatientHistory({pid, consult}) {
         </table>
       }
       <div className = 'row mt-4'>
-        <MDBDataTableV5 small scrollX hover entriesOptions={[5, 10, 15, 20]} entries={5} pagesAmount={4} data={datatable} />
+        <MDBDataTableV5 small scrollX hover order={['date', 'asc']} entriesOptions={[5, 10, 15, 20]} entries={5} pagesAmount={4} data={datatable} />
       </div>
       <div>
         {found && consult ? <Link to={{pathname: '/consult', state: {patient: JSON.stringify(patient)}}} className="btn btn-primary">Consult</Link> : ''}

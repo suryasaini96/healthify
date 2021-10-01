@@ -13,7 +13,7 @@ const Home = () => {
                 <div className="d-flex h-100 text-center align-items-center">
                     <div className="w-100 text-white">
                         <main className="px-3">
-                            <h1 className="display-4">Healthify.</h1>
+                            <h1 className="display-2">Healthify.</h1>
                             <p className="lead">An extensive health management system. Track all your health history with ease.</p>
                             <p className="lead">
                                 <Link to="/about" className="btn btn-lg btn-secondary text-black fw-bold border-white bg-white">Learn more</Link>

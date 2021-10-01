@@ -52,7 +52,22 @@ public class Patient extends Login {
 	@OneToMany(mappedBy = "cid")
 	private List<Consultation> consultations = new ArrayList<>();
 	
+	
+	
 	public void addConsultation(Consultation consultation) {
 		consultations.add(consultation);
+	}
+
+
+
+	public Patient(String email,String password,Long pid, String name, Long aadhar, LocalDate dob, String address, String city, Long mobile) {
+		super(email,password);
+		this.pid = pid;
+		this.name = name;
+		this.aadhar = aadhar;
+		this.dob = dob;
+		this.address = address;
+		this.city = city;
+		this.mobile = mobile;
 	}
 }

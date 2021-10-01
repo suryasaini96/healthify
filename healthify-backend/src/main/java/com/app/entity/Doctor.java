@@ -46,7 +46,20 @@ public class Doctor extends Login {
 	@OneToMany(mappedBy = "cid")
 	private List<Consultation> consultations = new ArrayList<>();
 	
+	
 	public void addConsultation(Consultation consultation) {
 		consultations.add(consultation);
+	}
+
+
+	public Doctor(String email,String password,Long did, String name, Long aadhar, String address, String city, Long mobile, String speciality) {
+		super(email,password);
+		this.did = did;
+		this.name = name;
+		this.aadhar = aadhar;
+		this.address = address;
+		this.city = city;
+		this.mobile = mobile;
+		this.speciality = speciality;
 	}
 }	
